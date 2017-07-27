@@ -32,7 +32,7 @@ answers = count.times.map do
   })
 end
 
-comment_vote_type = ["anwer", "question"]
+comment_vote_type = ["answer", "question"]
 vote_direction = [1, -1]
 
 votes = count.times.map do
