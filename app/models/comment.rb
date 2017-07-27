@@ -1,3 +1,4 @@
 class Comment < ActiveRecord::Base
-  # Remember to create a migration!
+  validates :commentable_type, :commenter_id, :commentable_id, :body {presence: true}
+
 end

@@ -1,3 +1,4 @@
 class Question < ActiveRecord::Base
-  # Remember to create a migration!
+  validates :author_id, :body, :title {presence: true}
+
 end
