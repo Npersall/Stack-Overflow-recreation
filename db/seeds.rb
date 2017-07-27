@@ -1,54 +1,43 @@
 require 'faker'
 
-User.delete_all
-Question.delete_all
-Answer.delete_all
-Vote.delete_all
-Comment.delete_all
+num_users = 5
 
-count = 5 
+num_users.times do |n|
+  user1 = User.create(username: Faker::Name.name, email: Faker::Internet.email, hashed_password: 'password')
+  user2 = User.create(username: Faker::Name.name, email: Faker::Internet.email, hashed_password: 'password')
 
-users = count.times.map do
-  User.create!({
-    username: Faker::Name.first_name,
-    email: Faker::Internet.email,
-    hashed_password: 'password'
-  })
+  # first user asks question
+  user1.questions.create(title: "#{user1.username} Question Title", body: "#{user1.username} Question Body")
+
+  # second user answers that question
+  user2.answers.create(body: "#{user2.username} Answer Body", question: Question.last, best_answer: false )
 end
 
-questions = count.times.map do
-  Question.create!({
-    author_id: users.sample.id,
-    body: Faker::Hacker.adjective,
-    title: Faker::Pokemon.move
-  })
+users = User.all
+questions = Question.all
+answers = Answer.all
+
+# create comments for Q & As
+questions.each do |question|
+  # 3 comments from random users
+  question.comments.create(commenter: users.sample, body: Faker::Pokemon.name)
+  question.comments.create(commenter: users.sample, body: Faker::Pokemon.name)
+  question.comments.create(commenter: users.sample, body: Faker::Pokemon.name)
+
+  # 3 votes from random users
+  question.votes.create(voter: users.sample, vote_direction: 1)
+  question.votes.create(voter: users.sample, vote_direction: 1)
+  question.votes.create(voter: users.sample, vote_direction: -1)
 end
 
-answers = count.times.map do
-  Answer.create!({
-    commenter_id: users.sample.id,
-    question_id: questions.sample.id,
-    body: Faker::Hacker.say_something_smart
-  })
-end
+answers.each do |answer|
+  # 3 comments from random users
+  answer.comments.create(commenter: users.sample, body: Faker::Pokemon.name)
+  answer.comments.create(commenter: users.sample, body: Faker::Pokemon.name)
+  answer.comments.create(commenter: users.sample, body: Faker::Pokemon.name)
 
-comment_vote_type = ["answer", "question"]
-vote_direction = [1, -1]
-
-votes = count.times.map do
-  Vote.create!({
-    votable_id: [1,2,3,4,5].sample,
-    votable_type: comment_vote_type.sample,
-    voter_id: users.sample.id,
-    vote_direction: vote_direction.sample
-  })
-end
-
-comments = count.times.map do
-  Comment.create!({
-    commentable_id: [1,2,3,4,5].sample,
-    commentable_type: comment_vote_type.sample,
-    commenter_id: users.sample.id,
-    body: Faker::Pokemon.move
-  })
+  # 3 votes from random users
+  answer.votes.create(voter: users.sample, vote_direction: 1)
+  answer.votes.create(voter: users.sample, vote_direction: 1)
+  answer.votes.create(voter: users.sample, vote_direction: -1)
 end

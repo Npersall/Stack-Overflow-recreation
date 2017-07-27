@@ -6,7 +6,7 @@ class CreateAnswers < ActiveRecord::Migration
       t.text     :body, null: false
       t.boolean  :best_answer, default: false
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

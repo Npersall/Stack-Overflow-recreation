@@ -6,7 +6,7 @@ class CreateVotes < ActiveRecord::Migration
       t.integer :voter_id, null: false
       t.integer :vote_direction
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

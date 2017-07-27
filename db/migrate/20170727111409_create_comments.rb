@@ -6,7 +6,7 @@ class CreateComments < ActiveRecord::Migration
       t.integer :commenter_id, null: false
       t.text    :body, null: false
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
