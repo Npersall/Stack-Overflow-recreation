@@ -1,0 +1,32 @@
+.comments-container {
+  margin-left: 30px;
+  font-size: 10pt;
+  background-color: #f8f8f8;
+  width: 40%;
+}
+
+.comment {
+  width: 30%;
+  margin-top: 20px;
+  /*border-bottom: 0.5px solid lightgrey;*/
+}
+
+.upvote-button {
+  width: 0;
+  height: 0;
+  border-bottom: 14px solid grey ;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+}
+
+.downvote-button {
+  width: 0;
+  height: 0;
+  border-top: 14px solid grey ;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+}
+
+#body-content{
+  margin-left: -167px;
+}
