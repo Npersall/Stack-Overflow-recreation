@@ -16,11 +16,14 @@ gem 'faker'
 
 gem 'shotgun', '~>0.9.1'
 
+gem 'bcrypt'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
   gem 'rspec', '~>3.0'
   gem 'capybara'
+
 end
 
 group :test, :development do

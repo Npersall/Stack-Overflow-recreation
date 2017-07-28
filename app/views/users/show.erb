@@ -1,0 +1,19 @@
+<h1> <%=@user.username%>'s Page </h1>
+
+<h2> Questions Posted </h2>
+  <ul>
+  <%@user.questions.each do |question| %>
+    <li><%= question.title %> <br>
+        <%=question.body%> </li>
+    <%end%>
+  </ul>
+
+<h2> Questions Answered </h2>
+  <ul>
+  <%@user.answered_questions.each do |question|%>
+    <li><%= question.title %> <br>
+        <%=question.body%> </li>
+    <%end%>
+  </ul>
+
+<%= erb :_new_question_form %>
