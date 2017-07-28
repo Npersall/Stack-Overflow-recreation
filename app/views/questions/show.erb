@@ -14,8 +14,9 @@
         <p class='question_body' ><%= question.body %></p>
       </div>
     </div>
-
   </div>
+
+  <a href="/questions/<%= question.id %>/comments" class='add-new-comment'>Add new comment</a>
   
   <div class='comments-container'>
     <% question.comments.each do |comment| %>
