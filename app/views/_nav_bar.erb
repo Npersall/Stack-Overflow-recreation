@@ -1,0 +1,14 @@
+<a href="/">Home</a>
+
+<%if current_user && logged_in?%>
+  <a href = "/users/<%=session[:id]%>"> <%=current_user.username%></a>
+  <form action= '/logout' method='post'>
+    <input type='hidden' name='_method' value='delete'>
+    <input type='submit' value='Logout'>
+  </form>
+<%else%>
+  <a href="/login">Login</a>
+  <a href="/users/new">Sign up</a>
+<%end %>
+
+

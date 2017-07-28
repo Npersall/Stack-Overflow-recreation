@@ -1,0 +1,12 @@
+<br>
+<br>
+<h1> Stack Underflow </h1>
+
+<h2> Questions </h2>
+
+<ul>
+  <% @questions.each do |question| %>
+    <li> <a href = 'questions/<%=question.id%>'> <%= question.title %> </a></li>
+  <%end%>
+</ul>
+
