@@ -32,22 +32,31 @@ answers = count.times.map do
   })
 end
 
-comment_vote_type = ["answer", "question"]
 vote_direction = [1, -1]
 
-votes = count.times.map do
-  Vote.create!({
-    votable_id: [1,2,3,4,5].sample,
-    votable_type: comment_vote_type.sample,
+votes_answers = answers.each do |answer|
+    answer.votes.create!({
     voter_id: users.sample.id,
     vote_direction: vote_direction.sample
   })
 end
 
-comments = count.times.map do
-  Comment.create!({
-    commentable_id: [1,2,3,4,5].sample,
-    commentable_type: comment_vote_type.sample,
+votes_questions = questions.each do |question|
+    question.votes.create!({
+    voter_id: users.sample.id,
+    vote_direction: vote_direction.sample
+  })
+end
+
+comments_answers = answers.each do |answer|
+    answer.comments.create!({
+    commenter_id: users.sample.id,
+    body: Faker::Pokemon.move
+  })
+end
+
+comments_questions = questions.each do |question|
+    question.comments.create!({
     commenter_id: users.sample.id,
     body: Faker::Pokemon.move
   })
