@@ -1,12 +1,12 @@
 <header>
   <h1 class='question_title' >Q: <%= question.title %></h1>
-  
+
   <div class="row">
 
     <div class="col-md-2">
       <a href="" title=""><i class="fa fa-arrow-up upvote-question" aria-hidden="true"></i></a><br>
       <span class='vote-count'><%= question.votes.length %></span><br>
-      <a href="" title=""><i class="fa fa-arrow-down downvote-question" aria-hidden="true"></i></a> 
+      <a href="" title=""><i class="fa fa-arrow-down downvote-question" aria-hidden="true"></i></a>
     </div>
 
     <div class="col-md-6">
@@ -17,7 +17,7 @@
   </div>
 
   <a href="/questions/<%= question.id %>/comments" class='add-new-comment'>Add new comment</a>
-  
+
   <div class='comments-container'>
     <% question.comments.each do |comment| %>
       <p class='comment'><%= comment.body %></p>
@@ -36,7 +36,7 @@
         <div class="col-md-2">
           <a href="" title=""><i class="fa fa-arrow-up upvote-answer" aria-hidden="true"></i></a><br>
           <span class='vote-count'><%= answer.votes.length %></span><br>
-          <a href="" title=""><i class="fa fa-arrow-down downvote-answer" aria-hidden="true"></i></a> 
+          <a href="" title=""><i class="fa fa-arrow-down downvote-answer" aria-hidden="true"></i></a>
         </div>
 
         <div class="col-md-6">
@@ -55,7 +55,5 @@
 
     </article>
   <% end %>
-
-
 
 </div>
