@@ -30,3 +30,7 @@
 #body-content{
   margin-left: -167px;
 }
+
+.question_form{
+  display: none;
+}
