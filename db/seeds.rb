@@ -51,13 +51,13 @@ end
 comments_answers = answers.each do |answer|
     answer.comments.create!({
     commenter_id: users.sample.id,
-    body: Faker::Lorem.sentences
+    body: Faker::Lorem.sentence
   })
 end
 
 comments_questions = questions.each do |question|
     question.comments.create!({
     commenter_id: users.sample.id,
-    body: Faker::Lorem.sentences
+    body: Faker::Lorem.sentence
   })
 end
