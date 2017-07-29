@@ -17,6 +17,10 @@
   </div>
 
   <a href="/questions/<%= question.id %>/comments" class='add-new-comment'>Add new comment</a>
+
+  <% if @new_comment %>
+    <%= erb :'/questions/_new_comment', locals: {question: @question} %>
+  <% end %>
   
   <div class='comments-container'>
     <% question.comments.each do |comment| %>
