@@ -27,8 +27,26 @@
   border-right: 7px solid transparent;
 }
 
-#body-content{
-  margin-left: -167px;
+.body-content{
+  margin-left: -110px;
+  font-size: 12pt;
+}
+
+.add-new-comment {
+  background:none!important;
+  color:#8C8C8C;
+  padding:0!important;
+  font: inherit;
+  font-size: 8pt;
+}
+
+.errors {
+  color: red;
+}
+
+.vote-count {
+  margin-left: 12px;
+  font-size: 18px;
 }
 
 .question_form{

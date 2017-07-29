@@ -6,6 +6,13 @@ class Answer < ActiveRecord::Base
   has_many :votes, as: :votable
   belongs_to :question
 
+  def selected_answer(selected_answer)
+    if self.id == selected_answer.id
+      return true
+    end
+    false
+  end
+
 end
 
 #tested

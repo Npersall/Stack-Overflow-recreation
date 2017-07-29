@@ -1,1 +1,112 @@
+<header>
+  <h1 class='question_title' >Q: <%= question.title %></h1>
+  <% if @question_vote_errors %>
+    <% @question_vote_errors.each do |error| %>
+      <p class="errors"><%= error %></p>
+    <% end %>
+  <% end %>
+  <div class="row">
 
+    <div class="col-md-2">
+      <form action="/questions/<%= question.id %>/votes" method="post">
+        <input type="hidden" name="vote_type" value='1'>
+        <button type="submit" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-arrow-up"></span>
+        </button>
+      </form>
+      <span class='vote-count'><%= vote_count(question) %></span>
+      <br>
+      <form action="/questions/<%= question.id %>/votes" method="post">
+        <button type="submit" class="btn btn-default btn-sm">
+          <input type="hidden" name="vote_type" value='-1'>
+          <span class="glyphicon glyphicon-arrow-down"></span>
+        </button>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <div class="body-content">
+        <p class='question_body' ><%= question.body %></p>
+      </div>
+    </div>
+  </div>
+
+  <a href="/questions/<%= question.id %>/question/comments" class='add-new-comment'>Add new comment</a>
+
+  <% if @question_new_comment %>
+    <%= erb :'/questions/_new_comment', locals: {question: @question} %>
+  <% end %>
+
+  <div class='comments-container'>
+    <% question.comments.each do |comment| %>
+      <p class='comment'><%= comment.body %></p>
+    <% end %>
+  </div>
+</header>
+  <br><br>
+<div class='answers-container'>
+  <h3><%= question.answers.length %> Answers</h3>
+
+
+  <% question.answers.each do |answer| %>
+    <article id="<%= answer.id %>">
+    <% if @answer_vote_errors && answer.selected_answer(this_answer) %>
+      <% @answer_vote_errors.each do |error| %>
+        <p class="errors"><%= error %></p>
+      <% end %>
+    <% end %>
+      <div class="row">
+
+        <div class="col-md-2">
+          <form action="/questions/<%= question.id %>/answers/<%= answer.id %>/votes" method="post">
+            <input type="hidden" name="vote_type" value='1'>
+            <button type="submit" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-arrow-up"></span>
+            </button>
+          </form>
+
+          <span class='vote-count'><%= vote_count(answer) %></span><br>
+
+          <form action="/questions/<%= question.id %>/answers/<%= answer.id %>/votes" method="post">
+            <input type="hidden" name="vote_type" value='-1'>
+            <button type="submit" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-arrow-down"></span>
+            </button>
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <div class="body-content">
+            <p><%= answer.body %></p>
+          </div>
+        </div>
+
+      </div>
+
+      <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/comments" class='add-new-comment'>Add new comment</a>
+
+      <% if @answer_new_comment && answer.selected_answer(this_answer) %>
+        <%= erb :'/questions/_new_comment', locals: {question: @question, answer: answer} %>
+      <% end %>
+
+      <div class='comments-container'>
+        <% answer.comments.each do |comment| %>
+          <p class='comment'><%= comment.body %></p>
+        <% end %>
+      </div>
+
+    </article>
+  <% end %>
+  <br>
+  <% if @errors %>
+    <% @errors.each do |error| %>
+      <p class="errors"><%= error %></p>
+    <% end %>
+  <% end %>
+
+  <h4>Your Answer</h4><br>
+  <form action="/questions/<%= question.id %>/answers" method="POST">
+   <textarea rows='6' cols='80' placeholder="Type your answer here" name="new_answer"></textarea><br>
+    <input type="submit" name="add_new_answer" value="Add answer">
+</form>
+</div>

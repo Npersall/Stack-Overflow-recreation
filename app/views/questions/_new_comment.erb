@@ -1,4 +1,5 @@
-<form action="_new_comment_submit" method="get" accept-charset="utf-8">
-  _new_comment_submit
-  get
+<form action="/questions/<%= question.id %>" method="POST">
+  <input type="hidden" name="answer_id" value=<%= answer.id %>>
+  <textarea rows='4' cols='80' placeholder="Type comment here" name="new_comment"></textarea><br>
+  <input type="submit" name="add_new_comment" value="Add comment">
 </form>
