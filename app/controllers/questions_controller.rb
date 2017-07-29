@@ -42,9 +42,9 @@ end
 
 post '/questions/:id' do
   @question = Question.find(params[:id])
-  @answer = @question.answers.find(params[:answer_id])
 
-  if @answer
+  if params[:answer_id]
+    @answer = @question.answers.find(params[:answer_id])
     @answer.comments.create!({
     commenter_id: current_user.id,
     body: params[:new_comment]
