@@ -12,9 +12,7 @@ end
 
 post '/questions' do
 @question= Question.new(params[:question])
-p 'here'
   if request.xhr?
-    p 'xhr'
     if @question.save
       erb :'questions/_question_display', layout: false, locals: { question: @question}
     else
