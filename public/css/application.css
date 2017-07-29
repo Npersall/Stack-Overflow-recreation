@@ -28,7 +28,7 @@
 }
 
 .body-content{
-  margin-left: -167px;
+  margin-left: -130px;
   font-size: 12pt;
 }
 
@@ -38,4 +38,8 @@
   padding:0!important;
   font: inherit;
   font-size: 8pt;
+}
+
+.errors {
+  color: red;
 }
