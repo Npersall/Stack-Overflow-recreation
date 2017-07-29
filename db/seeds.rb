@@ -20,7 +20,7 @@ questions = count.times.map do
   Question.create!({
     author_id: users.sample.id,
     body: Faker::Lorem.paragraph,
-    title: Faker::Lorem.sentences
+    title: Faker::Lorem.sentence
   })
 end
 
