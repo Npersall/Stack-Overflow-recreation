@@ -1,19 +1,30 @@
 <h1> <%=@user.username%>'s Page </h1>
 
+<div>
 <h2> Questions Posted </h2>
-  <ul>
-  <%@user.questions.each do |question| %>
-    <li><%= question.title %> <br>
-        <%=question.body%> </li>
-    <%end%>
+  <ul class= "questions_posted_list">
+  <% @user.questions.each do |question| %>
+    <%= erb :"questions/_question_display", locals: {question: question} %>
+  <% end %>
   </ul>
+</div>
 
-<h2> Questions Answered </h2>
-  <ul>
+<div>
+<h2 id> Questions Answered </h2>
+  <ul class="questions_answered_list">
   <%@user.answered_questions.each do |question|%>
     <li><%= question.title %> <br>
         <%=question.body%> </li>
     <%end%>
   </ul>
+</div>
 
-<%= erb :_new_question_form %>
+<div id = 'post_question_container'>
+  <form id ='post_question' action="/questions/new" method="get">
+    <input type="submit" value="Post a question">
+  </form>
+</div>
+
+<div id = 'new_question_form_container'>
+  <%= erb :'questions/_new_question_form' %>
+</div>
