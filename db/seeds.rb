@@ -19,8 +19,8 @@ end
 questions = count.times.map do
   Question.create!({
     author_id: users.sample.id,
-    body: Faker::Hacker.adjective,
-    title: Faker::Pokemon.move
+    body: Faker::Lorem.paragraph,
+    title: Faker::Lorem.sentences
   })
 end
 
@@ -28,7 +28,7 @@ answers = count.times.map do
   Answer.create!({
     commenter_id: users.sample.id,
     question_id: questions.sample.id,
-    body: Faker::Hacker.say_something_smart
+    body: Faker::Lorem.paragraph
   })
 end
 
@@ -51,13 +51,13 @@ end
 comments_answers = answers.each do |answer|
     answer.comments.create!({
     commenter_id: users.sample.id,
-    body: Faker::Pokemon.move
+    body: Faker::Lorem.sentences
   })
 end
 
 comments_questions = questions.each do |question|
     question.comments.create!({
     commenter_id: users.sample.id,
-    body: Faker::Pokemon.move
+    body: Faker::Lorem.sentences
   })
 end
