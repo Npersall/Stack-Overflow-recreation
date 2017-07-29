@@ -16,9 +16,9 @@
     </div>
   </div>
 
-  <a href="/questions/<%= question.id %>/comments" class='add-new-comment'>Add new comment</a>
+  <a href="/questions/<%= question.id %>/question/comments" class='add-new-comment'>Add new comment</a>
 
-  <% if @new_comment %>
+  <% if @question_new_comment %>
     <%= erb :'/questions/_new_comment', locals: {question: @question} %>
   <% end %>
   
@@ -50,6 +50,12 @@
         </div>
 
       </div>
+
+      <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/comments" class='add-new-comment'>Add new comment</a>
+
+      <% if @answer_new_comment && answer.selected_answer(this_answer) %>
+        <%= erb :'/questions/_new_comment', locals: {question: @question, answer: answer} %>
+      <% end %>
 
       <div class='comments-container'>
         <% answer.comments.each do |comment| %>
