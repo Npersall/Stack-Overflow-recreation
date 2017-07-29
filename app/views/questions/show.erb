@@ -34,7 +34,7 @@
   <a href="/questions/<%= question.id %>/question/comments" class='add-new-comment'>Add new comment</a>
 
   <% if @question_new_comment %>
-    <%= erb :'/questions/_new_comment', locals: {question: @question} %>
+    <%= erb :'/questions/_new_comment', locals: {question: @question, answer: @answer} %>
   <% end %>
 
   <div class='comments-container'>
