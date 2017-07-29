@@ -1,12 +1,12 @@
 <header>
   <h1 class='question_title' >Q: <%= question.title %></h1>
-  
+
   <div class="row">
 
     <div class="col-md-2">
       <a href="" title=""><i class="fa fa-arrow-up upvote-question" aria-hidden="true"></i></a><br>
       <span class='vote-count'><%= question.votes.length %></span><br>
-      <a href="" title=""><i class="fa fa-arrow-down downvote-question" aria-hidden="true"></i></a> 
+      <a href="" title=""><i class="fa fa-arrow-down downvote-question" aria-hidden="true"></i></a>
     </div>
 
     <div class="col-md-6">
@@ -21,16 +21,16 @@
   <% if @question_new_comment %>
     <%= erb :'/questions/_new_comment', locals: {question: @question} %>
   <% end %>
-  
+
   <div class='comments-container'>
     <% question.comments.each do |comment| %>
       <p class='comment'><%= comment.body %></p>
     <% end %>
   </div>
 </header>
-
+  <br><br>
 <div class='answers-container'>
-  <h2><%= question.answers.length %> Answers</h2>
+  <h3><%= question.answers.length %> Answers</h3>
 
 
   <% question.answers.each do |answer| %>
@@ -40,7 +40,7 @@
         <div class="col-md-2">
           <a href="" title=""><i class="fa fa-arrow-up upvote-answer" aria-hidden="true"></i></a><br>
           <span class='vote-count'><%= answer.votes.length %></span><br>
-          <a href="" title=""><i class="fa fa-arrow-down downvote-answer" aria-hidden="true"></i></a> 
+          <a href="" title=""><i class="fa fa-arrow-down downvote-answer" aria-hidden="true"></i></a>
         </div>
 
         <div class="col-md-6">
@@ -65,7 +65,16 @@
 
     </article>
   <% end %>
+  <br>
+  <% if @errors %>
+    <% @errors.each do |error| %>
+      <p class="errors"><%= error %></p>
+    <% end %>
+  <% end %>
 
-
-
+  <h4>Your Answer</h4><br>
+  <form action="/questions/<%= question.id %>/answers" method="POST">
+   <textarea rows='6' cols='80' placeholder="Type your answer here" name="new_answer"></textarea><br>
+    <input type="submit" name="add_new_answer" value="Add answer">
+</form>
 </div>
