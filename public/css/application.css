@@ -32,7 +32,7 @@
   font-size: 12pt;
 }
 
-.add-new-comment {
+.add-new-comment, .best_answer {
   background:none!important;
   color:#8C8C8C;
   padding:0!important;
