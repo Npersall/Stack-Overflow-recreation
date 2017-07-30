@@ -83,7 +83,11 @@
 
       </div>
 
-      <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/comments" class='add-new-comment'>Add new comment</a>
+      <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/comments" class='add-new-comment'>Add new comment</a> | 
+
+      <% if question_poster(question) %>
+        <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/best" class='best-answer'>Best answer</a>
+      <% end %>
 
       <% if @answer_new_comment && answer.selected_answer(this_answer) %>
         <%= erb :'/questions/_new_comment', locals: {question: @question, answer: answer} %>
