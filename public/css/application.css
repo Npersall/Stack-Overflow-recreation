@@ -32,23 +32,42 @@
   font-size: 12pt;
 }
 
-.add-new-comment {
+.add-new-comment, .best-answer {
   background:none!important;
   color:#8C8C8C;
   padding:0!important;
   font: inherit;
   font-size: 8pt;
+  margin-bottom: 30px;
+}
+
+.best-answer {
+  display: inline;
 }
 
 .errors {
   color: red;
 }
 
-.vote-count {
+#question-vote-count, .answer-vote-count {
   margin-left: 12px;
   font-size: 18px;
 }
 
 .question_form{
   display: none;
+}
+
+.answer-container {
+  margin-top: 30px;
+}
+
+.check-mark {
+  color: green; 
+  font-size: 50px;
+}
+
+.col-md-3 {
+  margin-left: -140px;
+  margin-right: -130px;
 }
