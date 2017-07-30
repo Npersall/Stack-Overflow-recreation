@@ -48,7 +48,7 @@
   <h3><%= question.answers.length %> Answers</h3>
 
 
-  <% question.answers.each do |answer| %>
+  <% question.answers.sort_by{|answer| answer.id}.each do |answer| %>
     <article id="<%= answer.id %>">
     <% if @answer_vote_errors && answer.selected_answer(this_answer) %>
       <% @answer_vote_errors.each do |error| %>
@@ -74,6 +74,12 @@
             </button>
           </form>
         </div>
+
+        <% if answer.best_answer %>
+          <div class="col-md-3">
+            <span class="check-mark">&#10003;</span>
+          </div>
+        <% end %>
 
         <div class="col-md-6">
           <div class="body-content">
