@@ -8,16 +8,16 @@
   <div class="row">
 
     <div class="col-md-2">
-      <form action="/questions/<%= question.id %>/votes" method="post">
+      <form action="/questions/<%= question.id %>/votes" method="post" id="question-upvote">
         <input type="hidden" name="vote_type" value='1'>
-        <button type="submit" class="btn btn-default btn-sm">
+        <button type="submit" class="btn btn-default btn-sm" id="question-upvote-button">
           <span class="glyphicon glyphicon-arrow-up"></span>
         </button>
       </form>
-      <span class='vote-count'><%= vote_count(question) %></span>
+      <span id='question-vote-count'><%= vote_count(question) %></span>
       <br>
-      <form action="/questions/<%= question.id %>/votes" method="post">
-        <button type="submit" class="btn btn-default btn-sm">
+      <form action="/questions/<%= question.id %>/votes" method="post" id="question-downvote">
+        <button type="submit" class="btn btn-default btn-sm" id="question-downvote-button">
           <input type="hidden" name="vote_type" value='-1'>
           <span class="glyphicon glyphicon-arrow-down"></span>
         </button>
@@ -58,18 +58,18 @@
       <div class="row">
 
         <div class="col-md-2">
-          <form action="/questions/<%= question.id %>/answers/<%= answer.id %>/votes" method="post">
+          <form action="/questions/<%= question.id %>/answers/<%= answer.id %>/votes" method="post" id="answer-upvote">
             <input type="hidden" name="vote_type" value='1'>
-            <button type="submit" class="btn btn-default btn-sm">
+            <button type="submit" class="btn btn-default btn-sm" id="answer-upvote-button">
               <span class="glyphicon glyphicon-arrow-up"></span>
             </button>
           </form>
 
-          <span class='vote-count'><%= vote_count(answer) %></span><br>
+          <span class='answer-vote-count'><%= vote_count(answer) %></span><br>
 
-          <form action="/questions/<%= question.id %>/answers/<%= answer.id %>/votes" method="post">
+          <form action="/questions/<%= question.id %>/answers/<%= answer.id %>/votes" method="post" id="answer-downvote">
             <input type="hidden" name="vote_type" value='-1'>
-            <button type="submit" class="btn btn-default btn-sm">
+            <button type="submit" class="btn btn-default btn-sm" id="answer-downvote-button">
               <span class="glyphicon glyphicon-arrow-down"></span>
             </button>
           </form>
