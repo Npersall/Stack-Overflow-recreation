@@ -49,7 +49,7 @@
   color: red;
 }
 
-.vote-count {
+#question-vote-count, .answer-vote-count {
   margin-left: 12px;
   font-size: 18px;
 }
