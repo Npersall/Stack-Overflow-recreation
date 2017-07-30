@@ -7,3 +7,16 @@ post '/questions/:question_id/answers' do
     erb :'/questions/show'
   end
 end
+
+
+get '/questions/:question_id/answers/:answer_id/best' do
+  @this_answer = Answer.find(params[:answer_id])
+  @question = @this_answer.question
+  @answers = @question.answers
+
+  remove_best_answer(@answers)
+
+  @this_answer.update(best_answer: true)
+
+  redirect "/questions/#{ @question.id }"
+end
