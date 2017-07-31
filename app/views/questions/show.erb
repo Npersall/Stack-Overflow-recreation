@@ -31,8 +31,9 @@
     </div>
   </div>
 
-  <a href="/questions/<%= question.id %>/question/comments" class='add-new-comment'>Add new comment</a>
-
+  <% if logged_in? %>
+    <a href="/questions/<%= question.id %>/question/comments" class='add-new-comment'>Add new comment</a>
+  <% end %>
   <% if @question_new_comment %>
     <%= erb :'/questions/_new_comment', locals: {question: @question, answer: @answer} %>
   <% end %>
@@ -49,53 +50,56 @@
 
 
   <% question.answers.sort_by{|answer| answer.id}.each do |answer| %>
-    <article id="<%= answer.id %>">
-    <% if @answer_vote_errors && answer.selected_answer(this_answer) %>
-      <% @answer_vote_errors.each do |error| %>
-        <p class="errors"><%= error %></p>
-      <% end %>
-    <% end %>
-      <div class="row">
+    <div class='answer-container'>
 
-        <div class="col-md-2">
-          <form action="/questions/<%= question.id %>/answers/<%= answer.id %>/votes" method="post" id="answer-upvote">
-            <input type="hidden" name="vote_type" value='1'>
-            <button type="submit" class="btn btn-default btn-sm" id="answer-upvote-button">
-              <span class="glyphicon glyphicon-arrow-up"></span>
-            </button>
-          </form>
-
-          <span class='answer-vote-count'><%= vote_count(answer) %></span><br>
-
-          <form action="/questions/<%= question.id %>/answers/<%= answer.id %>/votes" method="post" id="answer-downvote">
-            <input type="hidden" name="vote_type" value='-1'>
-            <button type="submit" class="btn btn-default btn-sm" id="answer-downvote-button">
-              <span class="glyphicon glyphicon-arrow-down"></span>
-            </button>
-          </form>
-        </div>
-
-        <% if answer.best_answer %>
-          <div class="col-md-3">
-            <span class="check-mark">&#10003;</span>
-          </div>
+      <article id="<%= answer.id %>">
+      <% if @answer_vote_errors && answer.selected_answer(this_answer) %>
+        <% @answer_vote_errors.each do |error| %>
+          <p class="errors"><%= error %></p>
         <% end %>
+      <% end %>
+        <div class="row">
 
-        <div class="col-md-6">
-          <div class="body-content">
-            <p><%= answer.body %></p>
+          <div class="col-md-2">
+            <form action="/questions/<%= question.id %>/answers/<%= answer.id %>/votes" method="post" id="answer-upvote">
+              <input type="hidden" name="vote_type" value='1'>
+              <button type="submit" class="btn btn-default btn-sm" id="answer-upvote-button">
+                <span class="glyphicon glyphicon-arrow-up"></span>
+              </button>
+            </form>
+
+            <span class='answer-vote-count'><%= vote_count(answer) %></span><br>
+
+            <form action="/questions/<%= question.id %>/answers/<%= answer.id %>/votes" method="post" id="answer-downvote">
+              <input type="hidden" name="vote_type" value='-1'>
+              <button type="submit" class="btn btn-default btn-sm" id="answer-downvote-button">
+                <span class="glyphicon glyphicon-arrow-down"></span>
+              </button>
+            </form>
           </div>
+
+          <% if answer.best_answer %>
+            <div class="col-md-3">
+              <span class="check-mark">&#10003;</span>
+            </div>
+          <% end %>
+
+          <div class="col-md-6">
+            <div class="body-content">
+              <p><%= answer.body %></p>
+            </div>
+          </div>
+
         </div>
+        <% if logged_in? %>
+          <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/comments" class='add-new-comment'>Add new comment</a> | 
+
+          <% if question_poster(question) %>
+            <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/best" class='best-answer'>Best answer</a>
+          <% end %>
+        <% end %>
 
       </div>
-
-      <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/comments" class='add-new-comment'>Add new comment</a> | 
-
-      <% if logged_in? %>
-        <% if question_poster(question) %>
-          <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/best" class='best-answer'>Best answer</a>
-        <% end %>
-      <% end %>
 
       <% if @answer_new_comment && answer.selected_answer(this_answer) %>
         <%= erb :'/questions/_new_comment', locals: {question: @question, answer: answer} %>
