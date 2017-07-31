@@ -20,8 +20,8 @@ var postQuestionListener = function() {
     })
     .done(function(response){
        $('#post_question').hide();
-       $('.question_form').removeClass('question_form')
-       $('#new_question_form').show();
+       $('#new_question_form_container').show();
+       // $('#new_question_form').show();
    })
     .fail(function(){
       console.log("Failed to load question form.")
@@ -47,7 +47,7 @@ var newQuestionSubmitListener = function() {
       data: data
     })
     .done(function(response) {
-      $('#new_question_form_container').addClass('question_form');
+      $('#new_question_form_container').hide();
       $('#post_question').show();
       $('#new_question_form').trigger('reset')
       $('.questions_posted_list').append(response)

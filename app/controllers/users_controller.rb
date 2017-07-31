@@ -17,9 +17,9 @@ get '/users/:id' do
   check_permissions
   @user = User.find(params[:id])
   if current_user && logged_in?
-    erb :'users/show'
+    erb :'/users/show'
   else
-    redirect erb :'users/new'
+    redirect '/users/new'
   end
 end
 

@@ -1,4 +1,4 @@
-<%= erb :_errors %>
+<%= erb :'_errors' %>
 
 <form id = 'new_question_form' class="question_form" action='/questions' method='post'>
   <input type= 'hidden' name=question[author_id] value='<%=current_user.id%>'>

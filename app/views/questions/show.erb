@@ -31,7 +31,9 @@
     </div>
   </div>
 
-  <a href="/questions/<%= question.id %>/question/comments" class='add-new-comment'>Add new comment</a>
+  <% if logged_in? %>
+    <a href="/questions/<%= question.id %>/question/comments" class='add-new-comment'>Add new comment</a>
+  <% end %>
 
   <% if @question_new_comment %>
     <%= erb :'/questions/_new_comment', locals: {question: @question, answer: @answer} %>
@@ -89,11 +91,11 @@
 
       </div>
 
-      <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/comments" class='add-new-comment'>Add new comment</a> | 
-
       <% if logged_in? %>
+        <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/comments" class='add-new-comment'>Add new comment</a>
+
         <% if question_poster(question) %>
-          <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/best" class='best-answer'>Best answer</a>
+          <a href="/questions/<%= question.id %>/answers/<%= answer.id %>/best" class='best-answer'> | Best answer</a>
         <% end %>
       <% end %>
 
