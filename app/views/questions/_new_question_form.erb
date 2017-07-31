@@ -1,6 +1,6 @@
 <%= erb :_errors %>
 
-<form id = 'new_question_form' class="question_form" action='/questions' method='post'>
+<form id = 'new_question_form' action='/questions' method='post'>
   <input type= 'hidden' name=question[author_id] value='<%=current_user.id%>'>
   <label>Title:<input type='text' name=question[title]></label>
   <label>Question:<input type='text' name=question[body]></label>
