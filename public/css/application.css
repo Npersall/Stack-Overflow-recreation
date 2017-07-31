@@ -54,7 +54,11 @@
   font-size: 18px;
 }
 
-.question_form{
+/*.question_form{
+  display: none;
+}*/
+
+#new_question_form_container {
   display: none;
 }
 
