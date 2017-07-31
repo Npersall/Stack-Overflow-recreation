@@ -20,11 +20,11 @@ var postQuestionListener = function() {
     })
     .done(function(response){
        $('#post_question').hide();
-       $('.question_form').removeClass('question_form')
-       $('#new_question_form').show();
+       // $('.question_form').removeClass('question_form')
+       $('#new_question_form_container').show();
    })
     .fail(function(){
-      console.log("Failed to load question form.")
+      console.log("Failed to load question form");
     })
   });
 };
@@ -47,10 +47,10 @@ var newQuestionSubmitListener = function() {
       data: data
     })
     .done(function(response) {
-      $('#new_question_form_container').addClass('question_form');
+      // $('#new_question_form_container').addClass('question_form');
       $('#post_question').show();
-      $('#new_question_form').trigger('reset')
-      $('.questions_posted_list').append(response)
+      $('#new_question_form_container').trigger('reset').hide();
+      $('.questions_posted_list').append(response);
     })
   })
 }
