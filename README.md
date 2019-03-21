@@ -1,4 +1,4 @@
- # Stack Overflow recreation
+ # Stack Overflow Recreation
 
  * Team name: KEHN
  * Team members: Kevin Cai, Elsha Kwee, Hannie Dong, Nate Persall
