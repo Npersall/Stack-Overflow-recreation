@@ -1,4 +1,5 @@
  # Stack Overflow Recreation
+  ruby/sinatra App
 
  * Team name: KEHN
  * Team members: Kevin Cai, Elsha Kwee, Hannie Dong, Nate Persall
