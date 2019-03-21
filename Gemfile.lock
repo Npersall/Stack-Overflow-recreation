@@ -38,11 +38,11 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.2.0)
+    mini_portile2 (2.4.0)
     minitest (5.10.3)
     multi_json (1.12.1)
-    nokogiri (1.8.0)
-      mini_portile2 (~> 2.2.0)
+    nokogiri (1.10.1)
+      mini_portile2 (~> 2.4.0)
     pg (0.21.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -53,7 +53,7 @@ GEM
       pry (~> 0.10)
     public_suffix (2.0.5)
     rack (1.6.11)
-    rack-protection (1.5.3)
+    rack-protection (1.5.5)
       rack
     rack-test (0.7.0)
       rack (>= 1.0, < 3)
@@ -104,9 +104,11 @@ DEPENDENCIES
   capybara
   factory_girl
   faker
+  nokogiri (>= 1.8.5)
   pg
   pry-byebug
   rack (>= 1.6.11)
+  rack-protection (>= 1.5.5)
   rack-test
   rake
   rspec (~> 3.0)
