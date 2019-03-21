@@ -1,4 +1,4 @@
- # DBC Sinatra Overflow
+ # Stack Overflow recreation
 
  * Team name: KEHN
  * Team members: Kevin Cai, Elsha Kwee, Hannie Dong, Nate Persall
